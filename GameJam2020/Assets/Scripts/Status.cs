@@ -26,13 +26,13 @@ public class Status : MonoBehaviour
             --currentImmunityAfterDamageFrames;
         }
 
-        if(Input.GetKeyDown("k"))
+        if (Input.GetKeyDown("k"))
         {
             Debug.Log("Damage detected.");
             TakeDamage(20);
         }
 
-        if(Input.GetKeyDown("l"))
+        if (Input.GetKeyDown("l"))
         {
             Debug.Log("Stamina Reduction.");
             RemoveStamina(20);
@@ -41,7 +41,7 @@ public class Status : MonoBehaviour
         if (currentStamina < defaultStamina)
         {
             currentStamina += staminaRecoveryRate * Time.deltaTime;
-            if(currentStamina > defaultStamina)
+            if (currentStamina > defaultStamina)
             {
                 currentStamina = defaultStamina;
             }
@@ -73,12 +73,20 @@ public class Status : MonoBehaviour
 
     public void GainHealth(float healing)
     {
-        currentStamina += healing;
+        currentHealth += healing;
+        if (currentHealth > defaultHealth)
+        {
+            currentHealth = defaultHealth;
+        }
     }
 
     public void RemoveStamina(float staminaCost)
     {
         currentStamina -= staminaCost;
+        if (currentStamina > defaultStamina)
+        {
+            currentStamina = defaultStamina;
+        }
     }
 
     public bool CheckStamina(float staminaCost)
