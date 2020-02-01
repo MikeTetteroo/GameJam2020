@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float digSpeed = 4.0f;
     public float gravity = 20.0f;
-    public string currentCollectible;
     public GameObject Player;
     private Collider ground;
 
@@ -23,7 +22,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        characterController = GetComponent<CharacterController>();    
+        characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -51,16 +50,22 @@ public class Movement : MonoBehaviour
             {
                 ground.gameObject.SetActive(false);
             }
-            if(Input.GetButton("PlaceCollectible") && atDeposit == true)
+            if (Input.GetButton("PlaceCollectible") && atDeposit == true)
             {
-                Homebase.Instance.PlaceCollectible(currentCollectible);
+                Homebase.Instance.PlaceCollectible(Homebase.Instance.playerIsHolding);
                 holdingCollectible = false;
             }
         }
-            moveDirection.y -= gravity * Time.deltaTime;
+        moveDirection.y -= gravity * Time.deltaTime;
 
         characterController.Move(moveDirection * Time.deltaTime);
     }
+
+    public void SetHomeBaseBool(bool isInTrigger)
+    {
+        atDeposit = isInTrigger;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "DiggableGround")
