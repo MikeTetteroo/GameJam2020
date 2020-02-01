@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private bool digging = false;
     public bool atDeposit;
+    public bool holdingCollectible;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,7 @@ public class Movement : MonoBehaviour
             if(Input.GetButton("PlaceCollectible") && atDeposit == true)
             {
                 Homebase.Instance.PlaceCollectible(currentCollectible);
+                holdingCollectible = false;
             }
         }
             moveDirection.y -= gravity * Time.deltaTime;

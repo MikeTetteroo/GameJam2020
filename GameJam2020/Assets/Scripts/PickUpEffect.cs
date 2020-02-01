@@ -9,10 +9,12 @@ public class PickUpEffect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Collectible")
+        if (other.tag == "Collectible" && !player.holdingCollectible)
         {
+            player.holdingCollectible = true;
             Firework(other);
             player.currentCollectible = other.name;
+            Destroy(other.gameObject);
         }
     }
 
