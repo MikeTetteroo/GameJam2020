@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 968488602}
   - component: {fileID: 968488601}
   - component: {fileID: 968488600}
+  - component: {fileID: 968488603}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -499,6 +500,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 36.448, y: 0, z: -0.36800003}
+--- !u!114 &968488603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968488599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabfe62ab9eec2f45b37d649fdcdc15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 4
+  target: {fileID: 1957755452}
+  defaultDistanceFromTarget: 7
+  pitchMinMax: {x: -10, y: 40}
+  shouldCollideWithTerrain: 1
+  rotationSmoothTime: 1.2
 --- !u!1 &1737703900
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,10 +623,9 @@ GameObject:
   - component: {fileID: 1957755450}
   - component: {fileID: 1957755449}
   - component: {fileID: 1957755448}
-  - component: {fileID: 1957755453}
   - component: {fileID: 1957755454}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,24 +723,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1957755453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957755447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c337043067870f944b30a569e64f303c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
-  runningSpeed: 10
-  jumpSpeed: 8
-  digSpeed: 4
-  gravity: 20
-  Player: {fileID: 1957755447}
 --- !u!114 &1957755454
 MonoBehaviour:
   m_ObjectHideFlags: 0
