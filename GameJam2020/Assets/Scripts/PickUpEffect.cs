@@ -13,7 +13,7 @@ public class PickUpEffect : MonoBehaviour
         {
             player.holdingCollectible = true;
             Firework(other);
-            player.currentCollectible = other.name;
+            Homebase.Instance.playerIsHolding = other.name;
             Destroy(other.gameObject);
         }
     }
