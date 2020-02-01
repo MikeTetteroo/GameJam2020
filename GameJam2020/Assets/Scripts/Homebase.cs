@@ -43,18 +43,20 @@ public class Homebase : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log("ASS");
         if (other.gameObject.tag == "Player")
         {
-            //StartCoroutine(FadeTextIn(1f, UIPlaceText));
+            StartCoroutine(FadeTextIn(1f, UIPlaceText));
             other.gameObject.SendMessage("SetHomeBaseBool", true);
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
+        Debug.Log("TIDDIES");
         if (other.gameObject.tag == "Player")
         {
-            //StartCoroutine(FadeTextOut(1f, UIPlaceText));
+            StartCoroutine(FadeTextOut(1f, UIPlaceText));
             other.gameObject.SendMessage("SetHomeBaseBool", false);
         }
     }
