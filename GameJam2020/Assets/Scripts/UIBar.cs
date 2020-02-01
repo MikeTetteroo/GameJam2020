@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UIBar : MonoBehaviour
 {
-    public bool isHealthBar = true;
     public GameObject target;
 
     private float currentSize;
@@ -14,23 +13,13 @@ public class UIBar : MonoBehaviour
     void Start()
     {
         targetStatus = target.GetComponent<Status>();
-
         targetBar = transform.Find("Bar");
     }
 
     void Update()
     {
         // Get the healthbar of the target
-        if (isHealthBar)
-        {
-            currentSize = targetStatus.currentHealth / targetStatus.defaultHealth;
-        }
-
-        // If it is not the healthbar, get the stamina instead
-        else
-        {
-            currentSize = targetStatus.currentStamina / targetStatus.defaultStamina;
-        }
+        currentSize = targetStatus.currentHealth / targetStatus.defaultHealth;
 
         targetBar.localScale = new Vector3(currentSize, 1, 1);
     }
