@@ -11,11 +11,13 @@ public class Movement : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float digSpeed = 4.0f;
     public float gravity = 20.0f;
+    private float originalYScale; 
     public GameObject Player;
     private Collider ground;
 
     private Vector3 moveDirection = Vector3.zero;
     private bool digging = false;
+    private bool crouching = false;
     public bool atDeposit;
     public bool holdingCollectible;
 
@@ -23,6 +25,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        originalYScale = transform.localScale.y;
     }
 
     // Update is called once per frame
@@ -44,6 +47,19 @@ public class Movement : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 moveDirection.y = jumpSpeed;
+            }
+
+            if (Input.GetButton("Crouch"))
+            {
+                transform.localScale = new Vector3(transform.localScale.x ,originalYScale / 2 ,transform.localScale.z  );
+                characterController.center = new Vector3(characterController.center .x, originalYScale / 2,characterController.center .z);
+                crouching = true;
+            }
+            if (!Input.GetButton("Crouch") && crouching == true)
+            {
+                transform.localScale = new Vector3(transform.localScale.x ,originalYScale ,transform.localScale.z  );
+                characterController.center = new Vector3(characterController.center .x, 0,characterController.center .z) ;
+                crouching = false;
             }
 
             if (Input.GetButton("Dig") && digging == true)
