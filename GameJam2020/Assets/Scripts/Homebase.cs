@@ -9,6 +9,7 @@ public class Homebase : MonoBehaviour
     public Transform collectibles;
     public Collider deliverPoint;
     public Movement player;
+    public string playerIsHolding;
 
     public static Homebase Instance { get; private set; }
     // Start is called before the first frame update
@@ -30,13 +31,12 @@ public class Homebase : MonoBehaviour
 
     public void PlaceCollectible(string collectibleName)
     {
-        Debug.Log("ASS&TIDDIES");
         foreach (Transform collectible in collectibles)
         {
             if(collectible.name == collectibleName)
             {
-                Debug.Log("Found ass?");
                 collectible.gameObject.SetActive(true);
+                playerIsHolding = "";
             }
         }
     }
@@ -45,8 +45,8 @@ public class Homebase : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            StartCoroutine(FadeTextIn(1f, UIPlaceText));
-            player.atDeposit = true;
+            //StartCoroutine(FadeTextIn(1f, UIPlaceText));
+            other.gameObject.SendMessage("SetHomeBaseBool", true);
         }
     }
 
@@ -54,8 +54,8 @@ public class Homebase : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            StartCoroutine(FadeTextOut(1f, UIPlaceText));
-            player.atDeposit = false;
+            //StartCoroutine(FadeTextOut(1f, UIPlaceText));
+            other.gameObject.SendMessage("SetHomeBaseBool", false);
         }
     }
 
