@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour
         distanceFromTarget = defaultDistanceFromTarget;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Get the yaw and pitch 
         yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -37,8 +37,10 @@ public class PlayerCamera : MonoBehaviour
         // Terrain detection
         Vector3 terrainCollisionVector = (transform.position - target.position) * defaultDistanceFromTarget;
         RaycastHit hit;
-        if (shouldCollideWithTerrain && Physics.Linecast(target.position, terrainCollisionVector, out hit) && hit.distance < defaultDistanceFromTarget)
+        Debug.DrawLine(transform.position, target.position);
+        if (shouldCollideWithTerrain && Physics.Raycast(target.position, terrainCollisionVector, out hit) && hit.distance < defaultDistanceFromTarget)
         {
+            
             distanceFromTarget = hit.distance;
         }
         else
