@@ -29,13 +29,13 @@ public class Status : MonoBehaviour
         if(Input.GetKeyDown("k"))
         {
             Debug.Log("Damage detected.");
-            TakeDamage(5);
+            TakeDamage(20);
         }
 
         if(Input.GetKeyDown("l"))
         {
             Debug.Log("Stamina Reduction.");
-            RemoveStamina(5);
+            RemoveStamina(20);
         }
 
         if (currentStamina < defaultStamina)

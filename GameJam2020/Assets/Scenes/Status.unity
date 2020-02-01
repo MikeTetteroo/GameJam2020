@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 385013297}
   - component: {fileID: 385013299}
   - component: {fileID: 385013298}
-  - component: {fileID: 385013300}
   m_Layer: 5
   m_Name: BarSprite
   m_TagString: Untagged
@@ -359,21 +358,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385013296}
   m_CullTransparentMesh: 0
---- !u!114 &385013300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385013296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a9ac4a3b100be540ac0e89c788138de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isHealthBar: 0
-  target: {fileID: 991878191}
-  targetBar: {fileID: 0}
 --- !u!1 &495720873
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +872,9 @@ MonoBehaviour:
   jumpSpeed: 8
   digSpeed: 4
   gravity: 20
+  currentCollectible: 
   Player: {fileID: 0}
+  atDeposit: 0
 --- !u!114 &991878194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,6 +889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUpFirework: {fileID: 3545953024875610461, guid: fcfd4d8c4190eb64da2c808a1734a618,
     type: 3}
+  player: {fileID: 0}
 --- !u!143 &991878195
 CharacterController:
   m_ObjectHideFlags: 0
