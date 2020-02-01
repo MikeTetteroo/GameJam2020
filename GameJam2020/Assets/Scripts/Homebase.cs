@@ -6,39 +6,76 @@ using UnityEngine.UI;
 public class Homebase : MonoBehaviour
 {
     public Text UIPlaceText;
-    public GameObject[] collectibles;
+    public Transform collectibles;
     public Collider deliverPoint;
+    public Movement player;
+
+    public static Homebase Instance { get; private set; }
     // Start is called before the first frame update
+    private void Awake()
+    {
+
+        if (Instance != null)
+        {
+            DestroyImmediate(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+
+    }
+
+    
 
     public void PlaceCollectible(string collectibleName)
     {
-        foreach (GameObject collectible in collectibles)
+        Debug.Log("ASS&TIDDIES");
+        foreach (Transform collectible in collectibles)
         {
             if(collectible.name == collectibleName)
             {
-                collectible.SetActive(true);
+                Debug.Log("Found ass?");
+                collectible.gameObject.SetActive(true);
             }
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            StartCoroutine(TextFade(true));
+            StartCoroutine(FadeTextIn(1f, UIPlaceText));
+            player.atDeposit = true;
         }
     }
 
-    public void OnCollisionExit(Collision collision)
+    public void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            StartCoroutine(TextFade(false));
+            StartCoroutine(FadeTextOut(1f, UIPlaceText));
+            player.atDeposit = false;
         }
     }
 
-    public IEnumerator TextFade(bool fadeIn)
+    public IEnumerator FadeTextIn(float t, Text i)
     {
-        yield return new WaitForSeconds(0.2f);
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+        while (i.color.a < 1.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeTextOut(float t, Text i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        while (i.color.a > 0.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+            yield return null;
+        }
     }
 }

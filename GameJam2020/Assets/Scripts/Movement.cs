@@ -11,11 +11,13 @@ public class Movement : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float digSpeed = 4.0f;
     public float gravity = 20.0f;
+    public string currentCollectible;
     public GameObject Player;
     private Collider ground;
 
     private Vector3 moveDirection = Vector3.zero;
     private bool digging = false;
+    public bool atDeposit;
 
     // Start is called before the first frame update
     void Start()
@@ -48,12 +50,15 @@ public class Movement : MonoBehaviour
             {
                 ground.gameObject.SetActive(false);
             }
+            if(Input.GetButton("PlaceCollectible") && atDeposit == true)
+            {
+                Homebase.Instance.PlaceCollectible(currentCollectible);
+            }
         }
             moveDirection.y -= gravity * Time.deltaTime;
 
         characterController.Move(moveDirection * Time.deltaTime);
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "DiggableGround")
