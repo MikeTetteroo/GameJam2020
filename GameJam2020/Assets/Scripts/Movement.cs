@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
         if (characterController.isGrounded)
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
 
             if (Input.GetButton("Running"))
             {

@@ -35,9 +35,9 @@ public class PlayerCamera : MonoBehaviour
         transform.eulerAngles = targetRotation;
 
         // Terrain detection
-        Vector3 terrainCollisionVector = (transform.position - target.position)*defaultDistanceFromTarget;
+        Vector3 terrainCollisionVector = (transform.position - target.position) * defaultDistanceFromTarget;
         RaycastHit hit;
-        if (shouldCollideWithTerrain && Physics.Linecast(target.position, terrainCollisionVector, out hit))
+        if (shouldCollideWithTerrain && Physics.Linecast(target.position, terrainCollisionVector, out hit) && hit.distance < defaultDistanceFromTarget)
         {
             distanceFromTarget = hit.distance;
         }
@@ -48,5 +48,6 @@ public class PlayerCamera : MonoBehaviour
 
         // Put everything in the right place
         transform.position = target.position - transform.forward * distanceFromTarget;
+        target.rotation = Quaternion.Euler(0, yaw, 0);
     }
 }
