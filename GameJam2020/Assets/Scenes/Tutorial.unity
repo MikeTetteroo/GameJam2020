@@ -179,10 +179,9 @@ MonoBehaviour:
   jumpSpeed: 8
   digSpeed: 4
   gravity: 20
-  Player: {fileID: 132375778}
+  Player: {fileID: 0}
   atDeposit: 0
   holdingCollectible: 0
-  staminaDecrease: {fileID: 132375779}
 --- !u!114 &132375781
 MonoBehaviour:
   m_ObjectHideFlags: 0
