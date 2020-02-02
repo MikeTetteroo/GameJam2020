@@ -126,13 +126,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.1496271
-  m_Radius: 0.10023458
+  m_Height: 0.05
+  m_Radius: 0.05
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.02, z: 0}
 --- !u!65 &8353471331067937830
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -144,8 +144,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.21558286, y: 0.1520718, z: 0.10924751}
-  m_Center: {x: -0.0075568454, y: -0.0012223506, z: 0.004957049}
+  m_Size: {x: 0.21558286, y: 0.123, z: 0.10924751}
+  m_Center: {x: -0.0075568454, y: -0.006, z: 0.004957049}
 --- !u!95 &8353471331067937839
 Animator:
   serializedVersion: 3
