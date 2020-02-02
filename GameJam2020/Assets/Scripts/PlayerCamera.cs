@@ -50,6 +50,6 @@ public class PlayerCamera : MonoBehaviour
 
         // Put everything in the right place
         transform.position = target.position - transform.forward * distanceFromTarget;
-        target.rotation = Quaternion.Euler(0, yaw, 0);
+        target.rotation = Quaternion.Euler(0, yaw + 90, 0);
     }
 }

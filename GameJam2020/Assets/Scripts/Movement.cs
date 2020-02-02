@@ -12,8 +12,9 @@ public class Movement : MonoBehaviour
     public float digSpeed = 4.0f;
     public float gravity = 20.0f;
     private float originalYScale; 
-    public GameObject Player;
+    public GameObject player;
     private Collider ground;
+    public Animator anim;
 
     private Vector3 moveDirection = Vector3.zero;
     private bool digging = false;
@@ -40,25 +41,35 @@ public class Movement : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection = new Vector3(-Input.GetAxis("Vertical"), 0.0f, Input.GetAxis("Horizontal"));
             moveDirection = transform.TransformDirection(moveDirection);
+            //Debug.Log(transform.TransformDirection(moveDirection));
 
-            if (Input.GetButton("Running") && staminaDecrease.currentStamina > 0)
+            if (Input.GetButton("Running") && staminaDecrease.currentStamina > 0 && characterController.velocity != Vector3.zero)
             {
+                StartCoroutine(PlayAnimation("Fennek_Run", 0.5f));
                 moveDirection *= runningSpeed;
                 staminaDecrease.RemoveStamina(1f);
-            } else
+            }
+            else if (characterController.velocity != Vector3.zero)
             {
+                StartCoroutine(PlayAnimation("Fennek_Walk", 0.667f));
                 moveDirection *= speed;
+            }
+            else
+            {
+                StartCoroutine(PlayAnimation("Fennek_Idle", 1.5f));
             }
 
             if (Input.GetButton("Jump"))
             {
+                StartCoroutine(PlayAnimation("Fennek_Jump", 0.817f));
                 moveDirection.y = jumpSpeed;
             }
 
             if (Input.GetButton("Dig") && digging == true && staminaDecrease.currentStamina > 0)
             {
+                StartCoroutine(PlayAnimation("Fennek_Dig", 1.467f));
                 ground.gameObject.SetActive(false);
                 staminaDecrease.RemoveStamina(30.0f);
             }
@@ -68,6 +79,10 @@ public class Movement : MonoBehaviour
                 Homebase.Instance.PlaceCollectible(Homebase.Instance.playerIsHolding);
                 holdingCollectible = false;
             }
+            //if (transform.TransformDirection(moveDirection) == new Vector3(0,0,0))
+            //{
+            //    StartCoroutine(PlayAnimation("Fennek_Idle", 1.5f));
+            //}
         }
         if (!characterController.isGrounded)
         {
@@ -75,6 +90,8 @@ public class Movement : MonoBehaviour
         }
 
         characterController.Move(moveDirection * Time.deltaTime);
+
+        player.transform.position = this.transform.position;
     }
 
     public void SetHomeBaseBool(bool isInTrigger)
@@ -85,8 +102,7 @@ public class Movement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "DiggableGround")
-        {
-            
+        {          
             ground = other;
             digging = true;
         }
@@ -99,5 +115,11 @@ public class Movement : MonoBehaviour
             ground = null;
             digging = false;
         }
+    }
+
+    IEnumerator PlayAnimation(string clip, float length)
+    {
+        anim.Play(clip);
+        yield return new WaitForSeconds(length);
     }
 }
