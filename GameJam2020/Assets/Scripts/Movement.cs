@@ -83,6 +83,11 @@ public class Movement : MonoBehaviour
             //{
             //    StartCoroutine(PlayAnimation("Fennek_Idle", 1.5f));
             //}
+
+            if (Input.GetButton("Cancel"))
+            {
+                Application.Quit();
+            }
         }
         if (!characterController.isGrounded)
         {
