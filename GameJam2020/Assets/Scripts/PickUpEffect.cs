@@ -14,6 +14,7 @@ public class PickUpEffect : MonoBehaviour
             player.holdingCollectible = true;
             Firework(other);
             Homebase.Instance.playerIsHolding = other.name;
+            UiScript.Instance.ReturnItem();
             Destroy(other.gameObject);
         }
     }
