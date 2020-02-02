@@ -293,7 +293,7 @@ PrefabInstance:
     - target: {fileID: 2323390022237826207, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
       propertyPath: sceneToLoad
-      value: Level2
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 5348065935251748077, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
@@ -323,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
@@ -333,9 +333,7 @@ PrefabInstance:
     - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
       propertyPath: m_text
-      value: 'Level 2
-
-'
+      value: Level 1
       objectReference: {fileID: 0}
     - target: {fileID: 8963144550811617022, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
@@ -1374,6 +1372,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2323390022237826207, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
+        type: 3}
+      propertyPath: sceneToLoad
+      value: Tutorial
+      objectReference: {fileID: 0}
     - target: {fileID: 5348065935251748077, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
       propertyPath: m_Name
@@ -1387,7 +1390,7 @@ PrefabInstance:
     - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
@@ -1397,17 +1400,22 @@ PrefabInstance:
     - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353759933725405799, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
+        type: 3}
+      propertyPath: m_text
+      value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 8963144550811617022, guid: 5257a6ad1c0fbb647b9c4c9a0afad6ec,
         type: 3}
