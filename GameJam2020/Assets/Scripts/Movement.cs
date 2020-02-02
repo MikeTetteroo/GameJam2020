@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour
             if (Input.GetButton("Running") && staminaDecrease.currentStamina > 0)
             {
                 moveDirection *= runningSpeed;
-                staminaDecrease.RemoveStamina(0.5f);
+                staminaDecrease.RemoveStamina(1f);
             } else
             {
                 moveDirection *= speed;
@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
             if (Input.GetButton("Dig") && digging == true && staminaDecrease.currentStamina > 0)
             {
                 ground.gameObject.SetActive(false);
-                staminaDecrease.RemoveStamina(25.0f);
+                staminaDecrease.RemoveStamina(30.0f);
             }
 
             if (Input.GetButton("PlaceCollectible") && atDeposit == true)
