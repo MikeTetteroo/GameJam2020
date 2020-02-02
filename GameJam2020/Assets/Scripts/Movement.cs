@@ -21,6 +21,9 @@ public class Movement : MonoBehaviour
     public bool atDeposit;
     public bool holdingCollectible;
 
+    private AudioSource audioSource;
+    public AudioClip jumpSound;
+
     private Status staminaDecrease;
 
     // Start is called before the first frame update
@@ -33,6 +36,7 @@ public class Movement : MonoBehaviour
         UiScript.Instance.stamCircle.targetStatus = staminaDecrease;
         UiScript.Instance.uiBar.target = this.gameObject;
         UiScript.Instance.stamCircle.target = this.gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +59,10 @@ public class Movement : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 moveDirection.y = jumpSpeed;
+                if (audioSource != null){
+                    audioSource.clip = jumpSound;
+                    audioSource.Play();
+                }
             }
 
             if (Input.GetButton("Dig") && digging == true && staminaDecrease.currentStamina > 0)
