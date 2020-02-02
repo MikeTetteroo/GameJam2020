@@ -8,7 +8,10 @@ public class Patrol : MonoBehaviour
     public Transform player;
     public bool aggressive;
     public float aggroRange;
+    public float AttackRange;
+    private bool isAttacking;
     private int destPoint = 0;
+    private float attackDamage = 10;
     private UnityEngine.AI.NavMeshAgent agent;
 
 
@@ -48,6 +51,26 @@ public class Patrol : MonoBehaviour
             // close to the current one.
             else if (!agent.pathPending && agent.remainingDistance < 0.5f)
                 GotoNextPoint();
+        
+
+        if (Vector3.Distance(player.position, transform.position) < AttackRange){
+             Attacking(player.gameObject);
         }
+
+
+        IEnumerator Attacking (GameObject player) {
+            if (!isAttacking) {
+                isAttacking = true;
+                player.GetComponent<Status>().currentHealth =- attackDamage;
+                yield return new WaitForSeconds(1f);
+                isAttacking = false;
+            }
+    }
+
+    }
+
+
+
+
 }
 
