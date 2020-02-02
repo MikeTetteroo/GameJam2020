@@ -45,7 +45,7 @@ public class Homebase : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //StartCoroutine(FadeTextIn(1f, UIPlaceText));
+            UiScript.Instance.FadeText(true);
             other.gameObject.SendMessage("SetHomeBaseBool", true);
         }
     }
@@ -54,28 +54,8 @@ public class Homebase : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //StartCoroutine(FadeTextOut(1f, UIPlaceText));
+            UiScript.Instance.FadeText(false);
             other.gameObject.SendMessage("SetHomeBaseBool", false);
-        }
-    }
-
-    public IEnumerator FadeTextIn(float t, Text i)
-    {
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
-        while (i.color.a < 1.0f)
-        {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
-            yield return null;
-        }
-    }
-
-    public IEnumerator FadeTextOut(float t, Text i)
-    {
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
-        while (i.color.a > 0.0f)
-        {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
-            yield return null;
         }
     }
 }

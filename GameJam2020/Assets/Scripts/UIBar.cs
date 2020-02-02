@@ -7,12 +7,12 @@ public class UIBar : MonoBehaviour
     public GameObject target;
 
     private float currentSize;
-    private Status targetStatus;
+    public Status targetStatus;
     public Transform targetBar;
 
     void Start()
     {
-        targetStatus = target.GetComponent<Status>();
+        //targetStatus = target.GetComponent<Status>();
         targetBar = transform.Find("Bar");
     }
 
@@ -22,5 +22,11 @@ public class UIBar : MonoBehaviour
         currentSize = targetStatus.currentHealth / targetStatus.defaultHealth;
 
         targetBar.localScale = new Vector3(currentSize, 1, 1);
+    }
+
+    public void GetUIComponents()
+    {
+        targetStatus = target.GetComponent<Status>();
+        targetBar = transform.Find("Bar");
     }
 }

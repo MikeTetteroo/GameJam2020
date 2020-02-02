@@ -7,7 +7,7 @@ public class Status : MonoBehaviour
     public float defaultHealth = 100;
     public float defaultStamina = 100;
     public float defaultImmunityAfterDamageFrames = 120;
-    public float staminaRecoveryRate = 1;
+    public float staminaRecoveryRate = 1f;
 
     private float currentImmunityAfterDamageFrames;
     public float currentHealth;
