@@ -38,7 +38,7 @@ public class PlayerCamera : MonoBehaviour
         Vector3 terrainCollisionVector = (transform.position - target.position) * defaultDistanceFromTarget;
         RaycastHit hit;
         Debug.DrawLine(transform.position, target.position);
-        if (shouldCollideWithTerrain && Physics.Raycast(target.position, terrainCollisionVector, out hit) && hit.distance < defaultDistanceFromTarget)
+        if (shouldCollideWithTerrain && Physics.Raycast(target.position, terrainCollisionVector, out hit) && hit.distance < defaultDistanceFromTarget && hit.collider.tag != "Player")
         {
             
             distanceFromTarget = hit.distance;

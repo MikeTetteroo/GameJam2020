@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (characterController.isGrounded)
         {
@@ -49,19 +49,6 @@ public class Movement : MonoBehaviour
                 moveDirection.y = jumpSpeed;
             }
 
-            if (Input.GetButton("Crouch"))
-            {
-                transform.localScale = new Vector3(transform.localScale.x ,originalYScale / 2 ,transform.localScale.z  );
-                characterController.center = new Vector3(characterController.center .x, originalYScale / 2,characterController.center .z);
-                crouching = true;
-            }
-            if (!Input.GetButton("Crouch") && crouching == true)
-            {
-                transform.localScale = new Vector3(transform.localScale.x ,originalYScale ,transform.localScale.z  );
-                characterController.center = new Vector3(characterController.center .x, 0,characterController.center .z) ;
-                crouching = false;
-            }
-
             if (Input.GetButton("Dig") && digging == true)
             {
                 ground.gameObject.SetActive(false);
@@ -72,7 +59,10 @@ public class Movement : MonoBehaviour
                 holdingCollectible = false;
             }
         }
+        if (!characterController.isGrounded)
+        {
         moveDirection.y -= gravity * Time.deltaTime;
+        }
 
         characterController.Move(moveDirection * Time.deltaTime);
     }
