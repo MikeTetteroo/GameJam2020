@@ -740,6 +740,7 @@ MonoBehaviour:
   Player: {fileID: 491454625}
   atDeposit: 0
   holdingCollectible: 0
+  staminaDecrease: {fileID: 491454633}
 --- !u!114 &491454627
 MonoBehaviour:
   m_ObjectHideFlags: 0

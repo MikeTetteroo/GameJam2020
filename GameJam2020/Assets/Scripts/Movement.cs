@@ -21,6 +21,8 @@ public class Movement : MonoBehaviour
     public bool atDeposit;
     public bool holdingCollectible;
 
+    public Status staminaDecrease;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +38,10 @@ public class Movement : MonoBehaviour
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
 
-            if (Input.GetButton("Running"))
+            if (Input.GetButton("Running") && staminaDecrease.currentStamina > 0)
             {
                 moveDirection *= runningSpeed;
+                staminaDecrease.RemoveStamina(0.5f);
             } else
             {
                 moveDirection *= speed;
@@ -55,6 +58,7 @@ public class Movement : MonoBehaviour
                 characterController.center = new Vector3(characterController.center .x, originalYScale / 2,characterController.center .z);
                 crouching = true;
             }
+
             if (!Input.GetButton("Crouch") && crouching == true)
             {
                 transform.localScale = new Vector3(transform.localScale.x ,originalYScale ,transform.localScale.z  );
@@ -62,10 +66,12 @@ public class Movement : MonoBehaviour
                 crouching = false;
             }
 
-            if (Input.GetButton("Dig") && digging == true)
+            if (Input.GetButton("Dig") && digging == true && staminaDecrease.currentStamina > 0)
             {
                 ground.gameObject.SetActive(false);
+                staminaDecrease.RemoveStamina(25.0f);
             }
+
             if (Input.GetButton("PlaceCollectible") && atDeposit == true)
             {
                 Homebase.Instance.PlaceCollectible(Homebase.Instance.playerIsHolding);
