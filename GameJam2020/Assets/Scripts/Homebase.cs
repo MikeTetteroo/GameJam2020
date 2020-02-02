@@ -9,6 +9,7 @@ public class Homebase : MonoBehaviour
     public Transform collectibles;
     public Collider deliverPoint;
     public Movement player;
+    public string playerIsHolding;
 
     public static Homebase Instance { get; private set; }
     // Start is called before the first frame update
@@ -30,13 +31,12 @@ public class Homebase : MonoBehaviour
 
     public void PlaceCollectible(string collectibleName)
     {
-        Debug.Log("ASS&TIDDIES");
         foreach (Transform collectible in collectibles)
         {
             if(collectible.name == collectibleName)
             {
-                Debug.Log("Found ass?");
                 collectible.gameObject.SetActive(true);
+                playerIsHolding = "";
             }
         }
     }
@@ -45,8 +45,8 @@ public class Homebase : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            StartCoroutine(FadeTextIn(1f, UIPlaceText));
-            player.atDeposit = true;
+            UiScript.Instance.FadeText(true);
+            other.gameObject.SendMessage("SetHomeBaseBool", true);
         }
     }
 
@@ -54,28 +54,8 @@ public class Homebase : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            StartCoroutine(FadeTextOut(1f, UIPlaceText));
-            player.atDeposit = false;
-        }
-    }
-
-    public IEnumerator FadeTextIn(float t, Text i)
-    {
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
-        while (i.color.a < 1.0f)
-        {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
-            yield return null;
-        }
-    }
-
-    public IEnumerator FadeTextOut(float t, Text i)
-    {
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
-        while (i.color.a > 0.0f)
-        {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
-            yield return null;
+            UiScript.Instance.FadeText(false);
+            other.gameObject.SendMessage("SetHomeBaseBool", false);
         }
     }
 }
