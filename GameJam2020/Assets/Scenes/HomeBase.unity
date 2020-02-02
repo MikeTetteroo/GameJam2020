@@ -738,7 +738,6 @@ MonoBehaviour:
   Player: {fileID: 491454625}
   atDeposit: 0
   holdingCollectible: 0
-  staminaDecrease: {fileID: 491454633}
 --- !u!114 &491454627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,6 +1178,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9a94a6ffcec3947835b080a6af8cc0, type: 3}
+--- !u!114 &1051961672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4858455742840650744, guid: 464e3f55fc99cdd44bf9d65671f9ccab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1290802505901307096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fe470eda23c774eb04d346bfcf1bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1104117689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectibleDeliver: {fileID: 279491025}
   returnCollectible: {fileID: 1250567602}
+  stamCircle: {fileID: 1051961672}
+  uiBar: {fileID: 2078144466}
 --- !u!1 &1228255001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,6 +2446,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9a94a6ffcec3947835b080a6af8cc0, type: 3}
+--- !u!114 &2078144466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4858455743140020082, guid: 464e3f55fc99cdd44bf9d65671f9ccab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1290802505901307096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9ac4a3b100be540ac0e89c788138de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1290802505901307096
 PrefabInstance:
   m_ObjectHideFlags: 0

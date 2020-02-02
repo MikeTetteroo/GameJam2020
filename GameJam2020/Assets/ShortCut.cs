@@ -10,5 +10,6 @@ public class ShortCut : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         SceneManager.LoadScene(sceneToLoad);
+        UiScript.Instance.GetUIComponents();
     }
 }

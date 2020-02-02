@@ -8,6 +8,8 @@ public class UiScript : MonoBehaviour
 
     public Text collectibleDeliver;
     public Text returnCollectible;
+    public StaminaCircle stamCircle;
+    public UIBar uiBar;
     public static UiScript Instance { get; private set; }
 
     private void Awake()
@@ -22,6 +24,12 @@ public class UiScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
 
+    }
+
+    public void GetUIComponents()
+    {
+        Debug.Log("ass");
+        StartCoroutine(CollectComponents());
     }
 
     public void FadeText(bool fadeIn)
@@ -70,5 +78,16 @@ public class UiScript : MonoBehaviour
             i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
             yield return null;
         }
+    }
+
+    public IEnumerator CollectComponents()
+    {
+        Debug.Log("tiddies");
+        yield return new WaitForSeconds(2f);
+        //stamCircle = GetComponent<StaminaCircle>();
+        //uiBar = GetComponent<UIBar>();
+        yield return new WaitForSeconds(2f);
+        uiBar.GetUIComponents();
+        stamCircle.GetUI();
     }
 }

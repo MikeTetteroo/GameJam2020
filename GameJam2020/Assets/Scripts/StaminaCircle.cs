@@ -9,12 +9,12 @@ public class StaminaCircle : MonoBehaviour
     public GameObject target;
 
     private float currentSize;
-    private Status targetStatus;
+    public Status targetStatus;
     private Image imageComponent;
 
     void Start()
     {
-        targetStatus = target.GetComponent<Status>();
+        //targetStatus = target.GetComponent<Status>();
         imageComponent = GetComponent<Image>();
     }
 
@@ -31,5 +31,12 @@ public class StaminaCircle : MonoBehaviour
         {
             imageComponent.fillAmount = currentSize;
         }
+    }
+
+    public void GetUI()
+    {
+        Debug.Log("titties");
+        targetStatus = target.GetComponent<Status>();
+        imageComponent = GetComponent<Image>();
     }
 }
