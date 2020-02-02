@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8353471331067937828}
   m_Layer: 0
   m_Name: Fennek_V6 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   defaultHealth: 100
   defaultStamina: 100
   defaultImmunityAfterDamageFrames: 120
-  staminaRecoveryRate: 20
+  staminaRecoveryRate: 10
   currentHealth: 0
   currentStamina: 0
 --- !u!114 &8353471331067937827
